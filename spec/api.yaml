@@ -1,0 +1,58 @@
+# this is just an example of open api v3
+openapi: "3.0.3"
+info:
+  version: 1.0.0
+  title: Legacy API
+
+paths: {}
+
+components:
+  schemas:
+    Model:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    DefaultErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              type: string
+
+  responses:
+    UnauthorizedResponse:
+      description: "unauthorized response"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/DefaultErrorResponse"
+    BadRequestResponse:
+      description: "bad request response"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/DefaultErrorResponse"
+    ForbiddenResponse:
+      description: "forbidden response"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/DefaultErrorResponse"
+    InternalServerErrorResponse:
+      description: "internal server error response"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/DefaultErrorResponse"

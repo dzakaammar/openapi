@@ -1,0 +1,10 @@
+package: server2
+generate:
+  echo-server: true
+  models: true
+  embedded-spec: true
+import-mapping:
+  ./api.yaml: openapi/server
+output: ./server2/api.gen.go
+output-options:
+  skip-prune: true

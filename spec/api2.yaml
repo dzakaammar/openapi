@@ -1,0 +1,46 @@
+openapi: "3.0.3"
+info:
+  version: 1.0.0
+  title: Test API
+tags:
+  - name: test
+    description: test related APIs
+
+paths:
+  /test:
+    post:
+      summary: To test
+      operationId: TestPost
+      tags:
+        - test
+      responses:
+        "204":
+          $ref: "#/components/responses/Response"
+        "400":
+          $ref: "./api.yaml#/components/responses/BadRequestResponse"
+        "401":
+          $ref: "./api.yaml#/components/responses/UnauthorizedResponse"
+        "403":
+          $ref: "./api.yaml#/components/responses/ForbiddenResponse"
+        default:
+          $ref: "./api.yaml#/components/responses/InternalServerErrorResponse"
+
+components:
+  responses:
+    Response:
+      description: response
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - name
+              - id
+              - model
+            properties:
+              name:
+                type: string
+              id:
+                type: string
+              model:
+                $ref: "./api.yaml#/components/schemas/Model"
